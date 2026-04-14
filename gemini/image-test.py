@@ -16,8 +16,8 @@ client = genai.Client(
 
 
 response = client.models.generate_content(
-    model="gemini-3.1-flash-image-preview",
-    contents=("A cat reading a newspaper"),
+    model="gemini-3-pro-image-preview",
+    contents=("Generate an image of the Eiffel tower with fireworks in the background."),
     config=GenerateContentConfig(
         response_modalities=[Modality.TEXT, Modality.IMAGE],
     ),
@@ -27,4 +27,4 @@ for part in response.candidates[0].content.parts:
         print(part.text)
     elif part.inline_data:
         image = Image.open(BytesIO((part.inline_data.data)))
-        image.save("output_folder/example-image-NB2.png")
+        image.save("output_folder/example-image-eiffel-tower.png")
